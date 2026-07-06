@@ -1,0 +1,271 @@
+Q. What is Employee Attrition?
+Employee attrition is the rate at which employees leave an organization over a period of time.
+
+
+Follow-up Interview Question
+
+Q. Why is Employee Attrition a problem?
+
+Answer:
+High attrition can lead to:
+Increased hiring costs
+Training costs
+Loss of experienced employees
+Reduced productivity
+Lower team morale
+
+Q2. Is Employee Attrition a Classification or Regression Problem?
+Answer:
+Classification.
+Because the target variable is:
+Attrition = Yes
+Attrition = No
+Output is categorical, not continuous.
+
+Q3. Which Algorithms Can Be Used?
+Answer:
+Logistic Regression
+Decision Tree
+Random Forest
+XGBoost
+Gradient Boosting
+SVM
+
+Q4. Which Evaluation Metric Would You Use?
+Answer:
+Depends on data balance.
+If balanced:
+Accuracy
+If imbalanced:
+Precision
+Recall
+F1 Score
+ROC-AUC
+
+Q5. Why Do Companies Build Attrition Models?
+Answer:
+To identify employees who are likely to leave so that retention strategies can be implemented before resignation occurs.
+
+Q. What is the Target Variable in Employee Attrition Prediction?
+Answer:
+The target variable is Attrition, which indicates whether an employee leaves the company or stays.
+
+Q. What is the difference between Features and Target Variable?
+Answer:
+Features are the input variables used to make predictions, while the target variable is the output that the model tries to predict.
+
+Q. Why is Attrition not a Feature?
+Answer:
+Attrition is the outcome we want to predict. Features are used as inputs to predict the target variable
+
+Q. In Employee Attrition Prediction, which metric is often more important?
+Answer:
+Recall is often more important because missing an employee who is likely to leave (False Negative) can be more costly than mistakenly identifying a loyal employee as at risk (False Positive).
+
+Q. What does (1470, 35) mean?
+Answer:
+The dataset contains 1470 observations (rows) and 35 features/columns.
+
+Q. What is a Feature with No Predictive Power?
+Answer:
+A feature that does not provide useful information for predicting the target variable.
+Examples:
+
+CustomerID
+EmployeeID
+TransactionID
+Roll Number
+
+These are identifiers, not predictors.
+
+Q. What is a Constant Feature?
+Answer:
+A feature that has the same value for all observations and therefore provides no useful information for prediction.
+
+Example:
+StandardHours = 80
+80
+80
+80
+80
+80
+
+Q. Why do we remove constant features?
+Interview Answer
+Constant features have zero variance and provide no information to distinguish between classes. Keeping them increases dimensionality without improving predictive performance.
+
+Q. Why remove ID columns?
+Interview Answer
+ID columns uniquely identify records but usually have no causal relationship with the target variable. Including them can introduce noise and reduce model generalization.
+
+.value_counts()
+Counts the occurrences of each unique value.
+
+normalize=True
+Instead of counts, it returns proportions.
+
+* 100
+Converts proportions into percentages.
+
+Q. Why do we check the target variable distribution before training a model?
+Interview-Level Answer:
+We check the target variable distribution to determine whether the dataset is balanced or imbalanced. This helps us choose appropriate evaluation metrics, sampling strategies, and machine learning algorithms.
+
+Follow-up Question (Very Common)
+
+Q. What is an imbalanced dataset?
+Answer:
+An imbalanced dataset is one where one class has significantly more samples than the other class.
+Example:
+No  = 95%
+Yes = 5%
+The model can achieve high accuracy by predicting only the majority class, making accuracy misleading.
+
+Common Mistake
+Many candidates say:
+"I'll check the target variable because it's good practice."
+That's not enough.
+A stronger answer is:
+"The target distribution determines whether I should rely on accuracy or metrics such as precision, recall, F1-score, or ROC-AUC, and whether I need techniques to handle class imbalance."
+
+That shows you're connecting EDA to later modeling decisions.
+
+Q. Is this dataset balanced?
+Interview Answer
+No. The dataset is moderately imbalanced. Approximately 84% of employees stay, while 16% leave. Therefore, relying only on accuracy could be misleading, and metrics like Recall, Precision, F1-score, and ROC-AUC should also be evaluated.
+
+Q. Should we apply SMOTE immediately?
+Many candidates answer:
+Yes.
+That's not always correct.
+Better Answer
+No. First, I would establish a baseline model. If the minority class performance, especially Recall, is poor, then I would consider techniques such as class weighting, SMOTE, or other resampling methods.
+
+
+Q. What is a Baseline Model?
+Interview-Level Answer
+A baseline model is the first simple model built to establish a reference level of performance. More complex models are compared against this baseline to determine whether they provide meaningful improvements.
+
+Examples:
+
+Logistic Regression
+Decision Tree
+
+before trying:
+XGBoost
+LightGBM
+CatBoost
+
+Q. Why do we use df.describe() during EDA?
+Interview-Level Answer
+df.describe() provides statistical summaries of numerical features, including count, mean, standard deviation, minimum, maximum, and quartiles. It helps identify the data distribution, variability, potential outliers, and possible data quality issues before model building.
+
+Q. What does a high standard deviation indicate?
+Answer
+A high standard deviation indicates that the feature values are widely dispersed around the mean, showing high variability.
+
+--------------------------EDA-------------------------
+Question 1: Why 15 bins?
+Interview-Level Answer
+A bin represents an interval of values. The number of bins controls the level of detail in the histogram. Too few bins oversimplify the distribution and may hide important patterns, while too many bins make the histogram noisy and difficult to interpret. There is no fixed rule for choosing 15 bins; it depends on the dataset size and the distribution.
+
+Question 2: What is Histogram?
+Interview-Level Answer
+A histogram is a graphical representation of the distribution of a numerical variable. It groups data into intervals (bins) and shows how many observations fall into each interval.
+
+Notice two important words:
+Numerical variable
+Distribution
+A histogram is not just a bar graph.
+
+Question 3: What does bar height represent?
+Your Answer
+The height of each bar represents the frequency (or count) of observations that fall within that bin.
+
+Question 5: Business Insight
+The workforce is concentrated in the mid-career age group (approximately 28–42 years). HR may further investigate whether attrition differs across age groups, as younger and older employees might have different reasons for leaving.
+
+Interview Question #24
+Q. Why is Histogram used instead of Bar Chart for Age?
+Answer
+Age is a continuous numerical variable. Histograms are designed to visualize the distribution of continuous numerical data, whereas bar charts are used for categorical variables.
+
+IQR = 𝑄3−𝑄1
+Lower limit = 𝑄1 - 1.5 × IQR
+Upper limit = Q3 + 1.5 × IQR
+
+Why 1.5?
+John Tukey introduced it as a practical rule because it works well for many distributions.
+It balances:
+Detecting unusual observations.
+Avoiding too many false alarms.
+
+Interview Question #27
+Q. What do the whiskers represent?
+Interview-Level Answer
+The whiskers extend from the box to the smallest and largest observations that are within 1.5 × IQR of Q1 and Q3. Values beyond the whiskers are displayed as potential outliers.
+
+Interview Question #30
+Q. How do you know if a feature is a strong predictor?
+Interview Answer
+A feature is considered strong if it clearly separates the target classes or has a strong relationship with the target variable. This can be assessed through visualization, statistical tests, or feature importance from machine learning models.
+
+Q. Why do we use max_iter=1000?
+Answer
+Logistic Regression learns by optimizing a cost function iteratively. If it doesn't converge within the default number of iterations, increasing max_iter gives the optimizer more opportunities to find the optimal solution.
+
+Q. What does Logistic Regression learn during training?
+Answer
+Logistic Regression learns the optimal weights (coefficients) and bias that minimize the classification error by fitting the sigmoid function to the training data.
+
+Queck Question
+Q1. Why can't we use Linear Regression directly for binary classification?
+Linear Regression predicts continuous values that can be less than 0 or greater than 1. In binary classification, we need probabilities between 0 and 1. Logistic Regression uses the sigmoid function to convert the linear output into a valid probability.
+
+Q2. What is the purpose of the Sigmoid Function?
+Interview Answer
+The sigmoid function converts any real-valued input into a probability between 0 and 1, making it suitable for binary classification problems.
+
+Q3. Does Logistic Regression predict probabilities or classes first?
+Answer
+Logistic Regression first predicts the probability of belonging to the positive class. This probability is then compared with a decision threshold (usually 0.5) to produce the final class label.
+
+Example:
+Probability = 0.82
+↓
+Threshold = 0.5
+↓
+Prediction = Yes
+
+Q4. What is the default decision threshold?
+Answer
+The default decision threshold is 0.5. If the predicted probability is greater than or equal to 0.5, the model predicts the positive class; otherwise, it predicts the negative class.
+Important: The threshold is not fixed. For some business problems (e.g., fraud detection or disease diagnosis), we may choose a different threshold to prioritize precision or recall.
+
+Q5. Why did we increase max_iter to 1000?
+Answer
+Logistic Regression trains using an iterative optimization algorithm. If the optimizer cannot converge within the default number of iterations, increasing max_iter allows more iterations so the model can find the optimal coefficients and avoid convergence warnings.
+
+Q. What is the difference between predict() and predict_proba()?
+Interview Answer
+predict() returns the final predicted class labels (such as 0 or 1), whereas predict_proba() returns the probability of each class. These probabilities are useful when adjusting decision thresholds or evaluating model confidence.
+
+Q.Can we compare coefficients directly?
+Answer
+Only if the numerical features have been standardized (which you did using StandardScaler). Without scaling, coefficient magnitudes are influenced by the units of the features and are not directly comparable.
+
+Interview Questions (Project-Specific)
+Q53. Why Logistic Regression?
+Simple, fast, interpretable baseline for binary classification.
+
+Q54. Why class_weight='balanced'?
+To give more importance to the minority class and improve Recall.
+
+Q55. Why Recall is important here?
+Missing an employee who will leave is costlier than investigating one who stays.
+
+Q56. Why use ROC-AUC?
+It evaluates model performance across all decision thresholds, not just 0.5.
+
+Q57. Why save the model?
+To reuse it for deployment without retraining.
