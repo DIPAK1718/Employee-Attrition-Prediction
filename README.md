@@ -20,7 +20,7 @@ Target Variable:
   - Yes
   - No
 
-Number of Records: 
+Number of Records:  
 - 1470
  
 Number of Features:
