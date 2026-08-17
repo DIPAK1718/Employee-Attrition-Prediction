@@ -22,7 +22,7 @@ Target Variable:
 
 Number of Records: 
 - 1470
-
+ 
 Number of Features:
 - 35
 
