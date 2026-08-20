@@ -14,7 +14,7 @@ The objective is to help HR departments identify high-risk employees and take pr
  
 **Dataset:** IBM HR Analytics Employee Attrition Dataset
 
-Target Variable:
+Target Variable: 
 
 - Attrition
   - Yes
