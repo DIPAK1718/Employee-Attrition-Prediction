@@ -17,7 +17,7 @@ The objective is to help HR departments identify high-risk employees and take pr
 Target Variable: 
  
 - Attrition
-  - Yes
+  - Yes 
   - No
 
 Number of Records:  
