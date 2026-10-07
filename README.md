@@ -7,7 +7,7 @@ Employee attrition is a major challenge for organizations because replacing expe
 This project builds a Machine Learning model that predicts whether an employee is likely to leave the company based on HR data.
 
 The objective is to help HR departments identify high-risk employees and take proactive retention actions.
-
+ 
 --- 
 
 ## 📂 Dataset
