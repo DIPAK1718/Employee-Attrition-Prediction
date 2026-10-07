@@ -8,7 +8,7 @@ This project builds a Machine Learning model that predicts whether an employee i
 
 The objective is to help HR departments identify high-risk employees and take proactive retention actions.
 
----
+--- 
 
 ## 📂 Dataset
    
